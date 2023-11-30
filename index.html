@@ -134,11 +134,29 @@
             $(".scopeTextList").clone().prependTo(".scopeTextContainer");
         };
 
+        $(".scopeContainer").hover(
+            function () {
+                $(".scopeTextList").each((i, e) => {
+                    $(e).css("animation-play-state", "paused")
+                })
+            },
+            function () {
+                $(".scopeTextList").each((i, e) => {
+                    $(e).css("animation-play-state", "running")
+                })
+            }
+        );
+
         function onTextInputChange(e) {
             let newText = $("#textin").val()
             $('[name="sampleText"]').each((i, e) => {
                 $(e).text(newText)
             })
+
+            $(".scopeTextList").each((i, e) => {
+                $(e).css("animation-duration", "200s")
+            })
+
         }
     </script>
 </body>
